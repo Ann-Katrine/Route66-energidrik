@@ -1,0 +1,7 @@
+--USE Route66
+
+CREATE OR ALTER PROCEDURE se_alle_rigtige
+AS
+BEGIN
+	 SELECT * FROM Bruger WHERE DATENAME(MONTH,Monthbruger) = DATENAME(MONTH, GETDATE()) AND Har_rigtige = 1 
+END

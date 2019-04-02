@@ -1,0 +1,7 @@
+--USER route6
+
+CREATE OR ALTER PROCEDURE get_email
+AS
+BEGIN
+	 SELECT Mailbruger FROM Bruger WHERE Vinder = 1 AND DATENAME(MONTH,Monthbruger) = DATENAME(MONTH, GETDATE())
+END

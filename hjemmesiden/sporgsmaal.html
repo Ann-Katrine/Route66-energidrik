@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <title>deltage</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    </head>
+    <body style="background-color:#ffb366;" onload="GetQuestions(); GetAnswers();">
+        <!--overkrift-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-lg-12 p-3 text-white">
+                    <h1 class="text-center"><em>tilmeldelse</em></h1>
+                </div>
+            </div>
+        </div>
+        
+        <!--tilmeldelse-->
+        <div class="container">
+            <div class="h2-fulid text-center ">
+                <form action="php/Tilmeld.php" method="POST">
+					<table class="d-flex justify-content-center align-items-center">
+						<tr>
+							<td>Navn:</td>
+							<td><input id="name" type="text" name="name" placeholder="Indtast navn"></td>
+						</tr>
+						<tr>
+							<td>mail:</td>
+							<td><input id="mail" type="email" name="mail" placeholder="Indtast mail"></td>
+						</tr>
+						<tr>
+							<td>mobilnummer:</td>
+							<td><input id="mobilnummer" type="number" name="mobilnummer" placeholder="Indtast nummer"></td>
+						</tr>
+					</table>
+					<p>Vælg det svar du mener er rigtig og være med i konkurrencen</p>
+					<div id="Question"></div>
+					<table class="d-flex justify-content-center align-items-center">
+						<tr>
+							<td><input type="radio" name="Answer" id="Answer1" checked></td>
+							<td><a id="Answer1a"></a></td>
+						</tr>
+                        <tr>
+							<td><input type="radio" name="Answer" id="Answer2"/></td>
+							<td><a id="Answer2a"></a></td>
+						</tr>
+                        <tr>
+							<td><input type="radio" name="Answer" id="Answer3"/></td>
+							<td><a id="Answer3a"></a></td>
+						</tr>
+						<tr>
+							<td><input onclick="location.href='/hjemmesiden/Index.html'" type="button" value="tilbage til forsiden"/></td>
+							<td><input type="submit" value="tilmeld"/></td>
+						</tr>
+					</table>
+				</form>
+            </div>
+        </div> 
+		
+        <script>
+            function GetQuestions(){
+				var kage = new XMLHttpRequest();
+				kage = new XMLHttpRequest();
+				kage.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						document.getElementById("Question").innerHTML = this.responseText;
+					}
+				};
+				$.get("php/GetQuestion.php?q=d", function(data) {
+					$("#Question").html(data);
+				});
+			}
+			
+            function GetAnswers(){
+                //alert ("heii"); 
+				var kage = new XMLHttpRequest();
+				kage = new XMLHttpRequest();
+				kage.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+						document.getElementById("Answer1a").nodeValue = this.responseText;
+					}
+				};
+				$.get("php/GetAnswer.php?q=d", function(data) {
+                    var $array = data.split(":");
+                    var x = 0;
+                    $array.forEach(function(element) {
+                        switch (x) {
+                           case 0:
+                                  $("#Answer1a").html(element);
+                                  x++;
+                                  break;
+                              case 1:
+                                  $("#Answer2a").html(element);
+                                  x++;
+                                  break;
+                              case 2:
+                                  $("#Answer3a").html(element);
+                                  x++;
+                                  break;     
+                        }
+						setTimeout(stuff(),10)
+                        console.log(element);
+                    })
+                });
+			}
+			
+			function stuff(){
+                document.getElementById("Answer1").value = document.getElementById("Answer1a").text;
+                document.getElementById("Answer2").value = document.getElementById("Answer2a").text;        
+                document.getElementById("Answer3").value = document.getElementById("Answer3a").text;
+            }
+			
+        </script>
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
+</html> 

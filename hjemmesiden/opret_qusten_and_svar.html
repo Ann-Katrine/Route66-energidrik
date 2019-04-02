@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <title>login</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    </head>
+    <body style="background-color:#ebebe0">
+        <div class="col-12 col-sm-12 col-lg-12 p-3">
+            <ul>
+                <li>
+                    <a href="Index.html">Kundesiden</a>
+                </li>
+                <li>
+                    <a href="administartorside.html">Administartorsiden</a>
+                </li>
+                <li>
+                    <a href="Se_alle_rigtige_eller_forkerte.html">Se alle rigtige</a>
+                </li>
+                <li>
+                    <a href="Trak_tre_vinder.html" >Trak tre vinder</a>
+                </li>
+				 <li>
+                    <a href="opret_qusten_and_svar.html">Opret spørgsmål og svar HTML</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div style="margin-left:16%; padding:1px 5px; height:1000px;">
+            <div class="container">
+                <div class="row">
+                    <!--overkrift-->
+                    <div class="col-12 col-sm-12 col-lg-12 p-3 text-center">
+                        <h1><em>Opret spørgsmål og svarmuligheder</em></h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-lg-12 p-3 text-center">
+                        <p>Her kan man oprette nye spørgsmål til konkurrensen</p>
+						<table class="d-flex justify-content-center align-items-center">
+							<form action='PHP/qusten_og_svar.php' method='POST'>
+								<tr>
+									<td>Spørgsmål: </td>
+									<td><input id="qusten1" type="text" name="qusten" placeholder="indtsat spørgsmål"></td>
+								</tr>
+								<tr>
+									<td>svarmulighed 1: </td>
+									<td><input type="text" name="svarmulighed1" placeholder="Indtast svar"></td>
+								</tr>
+								<tr>
+									<td>svarmulighed 2: </td>
+									<td><input type="text" name="svarmulighed2" placeholder="Indtast svar"></td>
+								</tr>
+								<tr>
+									<td>svarmulighed 3: </td>
+									<td><input type="text" name="svarmulighed3" placeholder="Indtast svar"></td>
+								</tr>
+								<tr>
+									<td><button onclick="tilfojet()">tilføj</button></td>
+								</tr>
+							</form>
+						</table>
+						<div id="forsog1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		
+    </body>
+    
+    <link href="CSS/CSS_hsa.css" rel="stylesheet" type="text/css">
+    
+</html>

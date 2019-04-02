@@ -1,0 +1,7 @@
+--USE Route66
+
+CREATE OR ALTER PROCEDURE se_alle_forkert
+AS
+BEGIN
+	 SELECT * FROM Bruger WHERE DATENAME(MONTH,Monthbruger) = DATENAME(MONTH, GETDATE()) AND Har_rigtige = 0
+END
